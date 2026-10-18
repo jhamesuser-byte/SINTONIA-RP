@@ -23,7 +23,7 @@ local YEL = Color3.fromRGB(255,200,50)
 local STAFF_RED = Color3.fromRGB(255,20,40)
 
 local C = (getgenv and getgenv()) or _G
-cloneref = cloneref or function(v) return v end
+cloneref = cloneref or function(x) return x end
 gethui = gethui or get_hidden_gui
 protect_gui = protect_gui or protectgui or (syn and syn.protect_gui)
 
@@ -84,7 +84,7 @@ local T = {
 }
 
 if C.__Xyz_CLEANUP then pcall(C.__Xyz_SINTONIA_CLEANUP) end
-if C.__Xyz_CLEANUP then pcall(C.__Xyz_MOBILIDADE_CLEANUP); C.__VETERANO_MOBILIDADE_CLEANUP = nil end
+if C.__Xyz_CLEANUP then pcall(C.__Xyz_MOBILIDADE_CLEANUP); C.__Xyz_MOBILIDADE_CLEANUP = nil end
 
 local function handleReady(conn) table.insert(o.connections, conn); return conn end
 local GuiService = game:GetService("GuiService")
