@@ -30,7 +30,7 @@ protect_gui = protect_gui or protectgui or (syn and syn.protect_gui)
 local parentGui = LocalPlayer:WaitForChild("PlayerGui")
 
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "SINTONIA_VTMenu"
+screenGui.Name = "Xyz Panel"
 screenGui.ResetOnSpawn = false
 screenGui.IgnoreGuiInset = true
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
@@ -83,8 +83,8 @@ local T = {
     camuflarNickEnabled=false,
 }
 
-if C.__VETERANO_SINTONIA_CLEANUP then pcall(C.__VETERANO_SINTONIA_CLEANUP) end
-if C.__VETERANO_MOBILIDADE_CLEANUP then pcall(C.__VETERANO_MOBILIDADE_CLEANUP); C.__VETERANO_MOBILIDADE_CLEANUP = nil end
+if C.__Xyz_CLEANUP then pcall(C.__Xyz_SINTONIA_CLEANUP) end
+if C.__Xyz_CLEANUP then pcall(C.__Xyz_MOBILIDADE_CLEANUP); C.__VETERANO_MOBILIDADE_CLEANUP = nil end
 
 local function handleReady(conn) table.insert(o.connections, conn); return conn end
 local GuiService = game:GetService("GuiService")
