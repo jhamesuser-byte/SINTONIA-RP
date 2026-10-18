@@ -534,7 +534,7 @@ do
         end
         local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
         local animation = Instance.new("Animation")
-        animation.Name = "VeteranoGhostWalk"
+        animation.Name = "XyzGhostWalk"
         animation.AnimationId = (humanoid.RigType == Enum.HumanoidRigType.R15) and WALK_ANIMATION_R15 or WALK_ANIMATION_R6
         local success, track = pcall(function() return animator:LoadAnimation(animation) end)
         if success and track then
@@ -576,7 +576,7 @@ do
     local function stopGhost()
         if not isGhost then return end
         isGhost = false
-        RunService:UnbindFromRenderStep("VeteranoGhostCameraFix")
+        RunService:UnbindFromRenderStep("XyzGhostCameraFix")
         if camLockConnection then camLockConnection:Disconnect() camLockConnection = nil end
         stopGhostNoclip()
         if walkTrack then pcall(function() walkTrack:Stop(0.1) end) walkTrack = nil end
@@ -609,7 +609,7 @@ do
         local startCFrame = realRoot.CFrame
         targetY = startCFrame.Y - HEIGHT
         platform = Instance.new("Part")
-        platform.Name = "VeteranoGhostPlatform"
+        platform.Name = "XyzGhostPlatform"
         platform.Size = Vector3.new(10, 1, 10)
         platform.Anchored = true
         platform.CanCollide = true
@@ -622,7 +622,7 @@ do
         local success, clonedChar = pcall(function() return realChar:Clone() end)
         if not success or not clonedChar then stopGhost() return end
         fakeModel = clonedChar
-        fakeModel.Name = "VeteranoGhostVisual"
+        fakeModel.Name = "XyzGhostVisual"
         for _, obj in ipairs(fakeModel:GetDescendants()) do if obj:IsA("Script") or obj:IsA("LocalScript") then obj:Destroy() end end
         fakeModel.Parent = workspace
         local fakeRoot = fakeModel:FindFirstChild("HumanoidRootPart")
@@ -640,7 +640,7 @@ do
                 workspace.CurrentCamera.CameraSubject = fakeHumanoid
             end
         end)
-        RunService:BindToRenderStep("VeteranoGhostCameraFix", Enum.RenderPriority.Last.Value, updateCameraAndGhost)
+        RunService:BindToRenderStep("XyzGhostCameraFix", Enum.RenderPriority.Last.Value, updateCameraAndGhost)
     end
 
     o.startGhost = startGhost
@@ -654,7 +654,7 @@ end
 -- CAMUFLAR NICK (INVENTARIO)
 -- ============================================
 do
-    local NOME_FAKE = "VETERANO.DEV"
+    local NOME_FAKE = "User"
     local CAMINHOS_NOME = {
         {"InventoryUI", "InvFrame", "InvPessoal", "BTxt"},
     }
@@ -1262,7 +1262,7 @@ end
 -- LOOP PRINCIPAL
 -- ============================================
 o.state = T
-C.__VETERANO_SINTONIA_RUNTIME = o
+C.___Xyz_RUNTIME = o
 
 local function Wz(dt)
     if o.destroyed then return end
@@ -1335,7 +1335,7 @@ do
         return v ~= nil
     end
     local function isConfiguredStaff(plr)
-        local list = C.VETERANO_SINTONIA_STAFF_USER_IDS
+        local list = C.Xyz_STAFF_USER_IDS
         if type(list) ~= "table" then return false end
         return list[plr.UserId] == true or list[tostring(plr.UserId)] == true or table.find(list, plr.UserId) ~= nil
     end
@@ -1642,7 +1642,7 @@ local function RF(b2, char)
     if not hl or not hl.Parent then
         local ok, newHl = pcall(function()
             local h = Instance.new("Highlight")
-            h.Name = "VeteranoESP_"..tostring(b2.player.UserId)
+            h.Name = "XyzESP_"..tostring(b2.player.UserId)
             h.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
             h.FillTransparency = 0.78
             h.OutlineTransparency = 0
@@ -2654,7 +2654,7 @@ do
     local function create()
         if S.gui and S.gui.Parent then return end
         local gui = mk("ScreenGui", {
-            Name="VeteranoDurabilidade", ResetOnSpawn=false,
+            Name="XyzDurabilidade", ResetOnSpawn=false,
             IgnoreGuiInset=true, DisplayOrder=9999,
             ZIndexBehavior=Enum.ZIndexBehavior.Sibling,
         }, getParent())
@@ -3122,7 +3122,7 @@ end
 -- ============================================
 do
     local hudGui = Instance.new("ScreenGui")
-    hudGui.Name = "VeteranoColetaHUD"
+    hudGui.Name = "XyzColetaHUD"
     hudGui.ResetOnSpawn = false
     hudGui.IgnoreGuiInset = true
     hudGui.DisplayOrder = 9997
@@ -3345,7 +3345,7 @@ end
 -- ============================================
 do
     local hudGui = Instance.new("ScreenGui")
-    hudGui.Name = "VeteranoStaffHUD"
+    hudGui.Name = "XyzStaffHUD"
     hudGui.ResetOnSpawn = false
     hudGui.IgnoreGuiInset = true
     hudGui.DisplayOrder = 9998
@@ -3450,7 +3450,7 @@ local titleLbl = Instance.new("TextLabel")
 titleLbl.Size = UDim2.new(0, 300, 0, 28)
 titleLbl.Position = UDim2.new(0, isMobile and 60 or 52, 0, isMobile and 8 or 6)
 titleLbl.BackgroundTransparency = 1
-titleLbl.Text = "VETERANO TEAM | SINTONIA RP V2"
+titleLbl.Text = "Xyz Panel"
 titleLbl.TextColor3 = WH
 titleLbl.Font = Enum.Font.GothamBlack
 titleLbl.TextSize = isMobile and 12 or 14
@@ -3461,7 +3461,7 @@ local subLbl = Instance.new("TextLabel")
 subLbl.Size = UDim2.new(0, 300, 0, 14)
 subLbl.Position = UDim2.new(0, isMobile and 60 or 52, 0, isMobile and 34 or 32)
 subLbl.BackgroundTransparency = 1
-subLbl.Text = "@VETERANO.DEV"
+subLbl.Text = "Xyz panel"
 subLbl.TextColor3 = TC
 subLbl.Font = Enum.Font.GothamMedium
 subLbl.TextSize = 10
@@ -4107,7 +4107,7 @@ local updateContent = function()
                 end
             end)
             criarSep("CAMUFLAGEM")
-            criarToggle("Camuflar Nick (VETERANO.DEV)", function() return T.camuflarNickEnabled end, function(v)
+            criarToggle("Camuflar Nick (Xyz)", function() return T.camuflarNickEnabled end, function(v)
                 if o.setCamuflarNick then pcall(o.setCamuflarNick, v) end
             end)
             criarSep("AUTO FARM")
@@ -4134,7 +4134,7 @@ local updateContent = function()
             criarBotao("Curar", curar)
             criarBotao("Destravar Portas", destravar)
             criarBotao("Encher Municao", encherMunicao)
-            rTextLbl.Text = "MISC - Diversos\n\nPerfect Lockpick:\n  Sempre acerta a posicao correta.\n\n2x Sorte (Gacha):\n  Aumenta chances de itens raros.\n\nCamuflar Nick:\n  Substitui seu nome no inventario\n  por VETERANO.DEV.\n\nAuto Farm Partes de Arma:\n  Teleporta automaticamente para\n  as pecas de arma espalhadas no mapa.\n\nAuto Farm Lixeiro:\n  Pega lixo e entrega automaticamente.\n\nAuto Farm Pesca:\n  Teleporta pra area e pega tudo.\n\nAcoes Rapidas:\n  Curar = enche vida\n  Destravar = abre portas\n  Municao = 999 balas"
+            rTextLbl.Text = "MISC - Diversos\n\nPerfect Lockpick:\n  Sempre acerta a posicao correta.\n\n2x Sorte (Gacha):\n  Aumenta chances de itens raros.\n\nCamuflar Nick:\n  Substitui seu nome no inventario\n  por User\n\nAuto Farm Partes de Arma:\n  Teleporta automaticamente para\n  as pecas de arma espalhadas no mapa.\n\nAuto Farm Lixeiro:\n  Pega lixo e entrega automaticamente.\n\nAuto Farm Pesca:\n  Teleporta pra area e pega tudo.\n\nAcoes Rapidas:\n  Curar = enche vida\n  Destravar = abre portas\n  Municao = 999 balas"
 
         elseif activeTab == "VEICULO" then
             rTitle.Text = "VEICULO"
@@ -4188,11 +4188,11 @@ local updateContent = function()
 
         elseif activeTab == "CONFIG" then
             rTitle.Text = "CONFIG"
-            criarSep("SOBRE A VETERANO TEAM")
+            criarSep("Xyz")
             local infoLbl = Instance.new("TextLabel")
             infoLbl.Size = UDim2.new(1, 0, 0, isMobile and 210 or 190)
             infoLbl.BackgroundColor3 = BG3
-            infoLbl.Text = "VETERANO TEAM\n\nUma equipe especializada em desenvolvimento de cheats para jogos de RP na plataforma Roblox.\n\nNossos projetos sao focados em:\n  - Sistemas de bypass avancados\n  - Menus personalizados\n  - Automacoes inteligentes\n  - Otimizacao de performance\n\nTambem desenvolvemos scripts sob encomenda para outras equipes, com sistemas de login, HWID e protecao anti-vazamento.\n\nDiscord: @veterano.dev"
+            infoLbl.Text = "Xyz Panel\n\nUma equipe especializada em desenvolvimento de cheats para jogos de RP na plataforma Roblox.\n\nNossos projetos sao focados em:\n  - Sistemas de bypass avancados\n  - Menus personalizados\n  - Automacoes inteligentes\n  - Otimizacao de performance\n\nTambem desenvolvemos scripts sob encomenda para outras equipes, com sistemas de login, HWID e protecao anti-vazamento."
             infoLbl.TextColor3 = DIM
             infoLbl.Font = Enum.Font.Gotham
             infoLbl.TextSize = isMobile and 9 or 10
@@ -4263,7 +4263,7 @@ local updateContent = function()
             local infoLbl2 = Instance.new("TextLabel")
             infoLbl2.Size = UDim2.new(1, 0, 0, isMobile and 70 or 60)
             infoLbl2.BackgroundColor3 = BG3
-            infoLbl2.Text = "Build: vt-team-v6\nTecla do menu: K\nFly: F | Noclip: N"
+            infoLbl2.Text = "Build: Xyz Panel\nTecla do menu: K\nFly: F | Noclip: N"
             infoLbl2.TextColor3 = DIM
             infoLbl2.Font = Enum.Font.Gotham
             infoLbl2.TextSize = isMobile and 9 or 10
@@ -4406,11 +4406,11 @@ end)
 
 updateContent()
 
-C.__VETERANO_SINTONIA_WINDOW = screenGui
-C.__VETERANO_SINTONIA_BUILD = "vt-team-v6"
-C.__VETERANO_SINTONIA_CLEANUP = function()
+C.__Xyz_WINDOW = screenGui
+C.__Xyz_BUILD = "Xyz Upgrade"
+C.__Xyz_CLEANUP = function()
     o.destroyed = true
-    C.__VETERANO_SINTONIA_RUNTIME = nil
+    C.__Xyz_RUNTIME = nil
     T.autoColetaEnabled = false
     if o.stopAutoColeta then pcall(o.stopAutoColeta) end
     if o.coletaHudGui then pcall(function() o.coletaHudGui:Destroy() end) end
@@ -4426,9 +4426,9 @@ C.__VETERANO_SINTONIA_CLEANUP = function()
     if o.setCamuflarNick then pcall(o.setCamuflarNick, false) end
     pcall(function() screenGui:Destroy() end)
     pcall(function()
-        local g = parentGui:FindFirstChild("VeteranoStaffHUD")
+        local g = parentGui:FindFirstChild("XyzStaffHUD")
         if g then g:Destroy() end
     end)
 end
 
-print("[VETERANO TEAM | SINTONIA RP V2] Carregado (v6)")
+print(" Xyz Panel ")
